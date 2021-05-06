@@ -21,6 +21,9 @@ def tito():
     with open('/proc/uptime', 'r') as f:
         posts['uptime'] = float(f.readline().split()[0])
 
+    # Get environment variables
+    posts['node_name'] = os.getenv('MY_NODE_NAME')
+
     # get system temperature
     #cmd = "sudo vcgencmd measure_temp"
     #posts['temp'] = subprocess.check_output(cmd)
