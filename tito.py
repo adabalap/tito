@@ -16,11 +16,17 @@ def tito():
     posts['hostname'] = returned_output[1]
 
     # get system uptime
-    posts['uptime'] = os.popen('uptime -p').read()[:-1]
+    #posts['uptime'] = os.popen('uptime -p').read()[:-1]
+
+    with open('/proc/uptime', 'r') as f:
+        posts['uptime'] = float(f.readline().split()[0])
 
     # get system temperature
-    # cmd = "sudo vcgencmd measure_temp"
-    # posts['temp'] = subprocess.check_output(cmd)
+    #cmd = "sudo vcgencmd measure_temp"
+    #posts['temp'] = subprocess.check_output(cmd)
 
 
     return render_template('index.html', posts=posts)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
