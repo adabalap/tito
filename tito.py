@@ -11,9 +11,13 @@ app = Flask(__name__)
 def tito():
     posts = {}
 
-    # get system name
+    # Get environment variables
+    # get node/host name set from the container environment variables
+    posts['node_name'] = os.getenv('MY_NODE_NAME')
+
+    # get pod name
     returned_output = os.uname()
-    posts['hostname'] = returned_output[1]
+    posts['pod_name'] = returned_output[1]
 
     # get system uptime
     #posts['uptime'] = os.popen('uptime -p').read()[:-1]
@@ -21,13 +25,9 @@ def tito():
     with open('/proc/uptime', 'r') as f:
         posts['uptime'] = float(f.readline().split()[0])
 
-    # Get environment variables
-    posts['node_name'] = os.getenv('MY_NODE_NAME')
-
     # get system temperature
     #cmd = "sudo vcgencmd measure_temp"
     #posts['temp'] = subprocess.check_output(cmd)
-
 
     return render_template('index.html', posts=posts)
 

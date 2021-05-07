@@ -6,17 +6,23 @@
 </head>
 <body>
     <center>
-        <a>Hi there i'm TITO, your friend! Bringing you the host statistics...</a>
+        <h1 style="color:blue;font-size:40px">Hi there i'm TITO, your friend! Bringing you the host statistics...</h1>
         <br><br>
         <table>
+            <h1>
             <tr>
                 <td><b>Host:</b></td>
                 <td>{{ posts['node_name'] }}</td>
             </tr>
             <tr>
-                <td><b>Uptime:</b></td>
-                <td>{{ posts['uptime'] }}</td>
+                <td><b>Pod:</b></td>
+                <td>{{ posts['pod_name'] }}</td>
             </tr>
+            <tr>
+                <td><b>Uptime:</b></td>
+                <td>{{ posts['uptime'] }} seconds</td>
+            </tr>
+            </h1>
         </table>
     </center>
 </body>
