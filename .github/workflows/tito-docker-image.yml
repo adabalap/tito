@@ -1,4 +1,4 @@
-name: 'tito: docker build images'
+name: "tito: docker build images"
 
 on:
   push:
