@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tito
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tito: web
+  template:
+    metadata:
+      labels:
+        tito: web
+    spec:
+      containers:
+      - name: tito
+        image: adabalap/tito:a297600a
+        env:
+          - name: MY_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tito-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    tito: web
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30001
