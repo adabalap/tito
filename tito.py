@@ -13,7 +13,11 @@ def tito():
 
     # Get environment variables
     # get node/host name set from the container environment variables
-    posts['node_name'] = os.getenv('MY_NODE_NAME')
+
+    # Using ternary operator
+    # [on_true] if [expression] else [on_false]
+
+    posts['node_name'] = os.getenv('HOSTNAME') if os.getenv('HOSTNAME') else  os.getenv('MY_NODE_NAME')
 
     # get pod name
     returned_output = os.uname()
