@@ -6,7 +6,7 @@ WORKDIR /tito
 
 COPY . .
 
-RUN pip3 install -r requirements.txt
+RUN dnf install python3 -y && pip3 install -r requirements.txt
 
 ARG FLASK_ENV="production"
 
