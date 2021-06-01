@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM redhat/ubi8-standard
+FROM redhat/ubi8-minimal
 
 WORKDIR /tito
 
