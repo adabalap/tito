@@ -23,7 +23,9 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
           fi
-          TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${SHORTREF}"
+          # Format the date as <DD-MMM-YYYY> (e.g., 25-Aug-2023)
+          DATE_TAG=$(date +'%d-%b-%Y')
+          TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${SHORTREF},${DOCKER_IMAGE}:${DATE_TAG}"
           # If the VERSION looks like a version number, assume that
           # this is the most recent version of the image and also
           # tag it 'latest'.
@@ -59,4 +61,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/arm64
           push: true
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: ${{ steps.prep.outputs.tags }}"
