@@ -1,37 +1,43 @@
-# tito: a simple web ui to display current host stats
+# tito.py: a simple web UI to display current host stats
 
 import os
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def tito():
     posts = {}
 
     # Get environment variables
-    # get node/host name set from the container environment variables
+    posts['node_name'] = os.getenv('HOSTNAME') or os.getenv('MY_NODE_NAME')
 
-    # Using ternary operator
-    # [on_true] if [expression] else [on_false]
-
-    posts['node_name'] = os.getenv('HOSTNAME') if os.getenv('HOSTNAME') else  os.getenv('MY_NODE_NAME')
-
-    # get pod name
+    # Get pod name
     returned_output = os.uname()
     posts['pod_name'] = returned_output[1]
 
-    # get system uptime
-    #posts['uptime'] = os.popen('uptime -p').read()[:-1]
-
+    # Get system uptime and format it
     with open('/proc/uptime', 'r') as f:
-        posts['uptime'] = float(f.readline().split()[0])
+        total_seconds = float(f.readline().split()[0])
+        days, remainder = divmod(int(total_seconds), 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        posts['formatted_uptime'] = f"{days} Days {hours:02d}:{minutes:02d}:{seconds:02d}"
 
-    # get system temperature
-    #cmd = "sudo vcgencmd measure_temp"
-    #posts['temp'] = subprocess.check_output(cmd)
+    # Get system memory information
+    with open('/proc/meminfo', 'r') as f:
+        mem_info = f.readlines()
+        mem_total = int(mem_info[0].split()[1])
+        mem_free = int(mem_info[1].split()[1])
+        posts['mem_usage'] = f"{(mem_total - mem_free) / 1024} MB"
+
+    # Get system CPU information
+    with open('/proc/loadavg', 'r') as f:
+        load_avg = f.read().split()[:3]
+        posts['cpu_load'] = " ".join(load_avg)
+
+    # Get the number of running processes
+    posts['num_processes'] = len(os.listdir('/proc')) - 4  # Subtract system processes
 
     return render_template('index.html', posts=posts)
 

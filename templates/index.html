@@ -2,28 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>TITO</title>
 </head>
 <body>
-    <center>
-        <h3 style="color:blue;font-size:40px">TITO: Total Information Technology Odyssey</h3>
-        <br><br>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='your-logo.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tech Blogs</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <h3>TITO: Total Information Technology Odyssey</h3>
         <table>
-            <h1>
             <tr>
-                <td><b>Host:</b></td>
+                <th>Host</th>
                 <td>{{ posts['node_name'] }}</td>
             </tr>
             <tr>
-                <td><b>Pod:</b></td>
+                <th>Pod</th>
                 <td>{{ posts['pod_name'] }}</td>
             </tr>
             <tr>
-                <td><b>Uptime:</b></td>
-                <td>{{ posts['uptime'] }} seconds</td>
+                <th>Uptime</th>
+                <td>{{ posts['formatted_uptime'] }}</td>
             </tr>
-            </h1>
+            <tr>
+                <th>Memory Usage</th>
+                <td>{{ posts['mem_usage'] }}</td>
+            </tr>
+            <tr>
+                <th>CPU Load</th>
+                <td>{{ posts['cpu_load'] }}</td>
+            </tr>
+            <tr>
+                <th>Number of Processes</th>
+                <td>{{ posts['num_processes'] }}</td>
+            </tr>
         </table>
-    </center>
+    </div>
 </body>
 </html>
