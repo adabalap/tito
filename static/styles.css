@@ -10,35 +10,66 @@ body {
     background-color: #f4f4f4;
 }
 
-.header {
+header {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    display: flex; /* Use flexbox to control alignment */
+    justify-content: space-between; /* Distribute items to the start and end */
 }
 
-.header .logo img {
-    max-width: 100px;
+.logo {
+    flex: 1; /* Allow the logo to grow and take available space */
+}
+
+.logo .logo-img {
+    max-width: 96px;
+    max-height: 96px;
+    width: auto;
     height: auto;
 }
 
-.header nav ul {
+.menu {
+    flex: 1; /* Allow the menu to grow and take available space */
+    text-align: right; /* Align menu items to the right */
+}
+
+nav ul {
     list-style: none;
     padding: 0;
 }
 
-.header nav ul li {
+nav ul li {
     display: inline;
     margin-right: 20px;
 }
 
-.header nav ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
 }
 
+/* Hide the menu items by default for small screens */
+.menu ul {
+    display: none;
+}
+
+/* Style the burger menu icon */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+}
+
+/* Show the menu items when the burger menu is active */
+.menu ul.show-menu {
+    display: block;
+}
+
 .content {
-    max-width: 800px;
+    max-width: 100%; /* Use full width */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -57,39 +88,34 @@ table {
     margin-top: 20px;
 }
 
-table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* Position the featured image to the right of the content */
+.featured-image {
+    float: right;
+    margin-left: 20px;
 }
 
-table th {
-    background-color: #007bff;
-    color: #fff;
+.featured-image img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-    .header nav ul {
-        text-align: center;
-        padding-top: 20px;
-    }
-
-    .header nav ul li {
+    /* Show the burger menu icon */
+    .burger-menu {
         display: block;
-        margin-bottom: 10px;
     }
 
-    .content {
-        padding: 10px;
+    /* Hide the menu items when the burger menu is shown */
+    .menu ul.show-menu {
+        display: block;
     }
-}
 
-.logo .logo-img {
-    max-width: 24px;
-    max-height: 24px;
-    width: auto;
-    height: auto;
-}
+    /* Reduce top padding for header on small screens */
+    header {
+        padding: 10px 0;
+    }
 
+    /* ... Other responsive styles as needed ... */
+}
 
