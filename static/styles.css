@@ -8,31 +8,34 @@ body, h1, h2, h3, p, ul, li {
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    margin: 0; /* Remove default margin */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
+/* Header styles */
 header {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    display: flex; /* Use flexbox to control alignment */
-    justify-content: space-between; /* Distribute items to the start and end */
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
-    flex: 1; /* Allow the logo to grow and take available space */
+    flex: 1;
 }
 
 .logo .logo-img {
-    max-width: 96px;
-    max-height: 96px;
+    max-width: 24px;
+    max-height: 24px;
     width: auto;
     height: auto;
 }
 
 .menu {
-    flex: 1; /* Allow the menu to grow and take available space */
-    text-align: right; /* Align menu items to the right */
+    flex: 1;
+    text-align: right;
 }
 
 nav ul {
@@ -68,54 +71,60 @@ nav ul li a {
     display: block;
 }
 
-.content {
-    max-width: 100%; /* Use full width */
-    margin: 20px auto;
-    padding: 20px;
+/* Content styles */
+.container {
+    display: flex; /* Use flexbox to create a two-column layout */
+    justify-content: space-between; /* Add space between columns */
+    max-width: 1200px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px; /* Add space around the content */
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-h3 {
-    color: #007bff;
-    font-size: 40px;
-    margin-bottom: 20px;
+.content {
+    flex: 1; /* Allow content to grow and take available space */
+    padding: 20px; /* Add space inside the content column */
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-/* Position the featured image to the right of the content */
 .featured-image {
-    float: right;
-    margin-left: 20px;
+    flex: 1; /* Allow image to grow and take available space */
+    padding: 20px; /* Add space inside the image column */
+    background-color: #f9f9f9; /* Add a background color to the image column */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .featured-image img {
-    max-width: 100%;
+    max-width: 100%; /* Ensure the image fits within its container */
     height: auto;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-    /* Show the burger menu icon */
     .burger-menu {
         display: block;
     }
 
-    /* Hide the menu items when the burger menu is shown */
     .menu ul.show-menu {
         display: block;
     }
 
-    /* Reduce top padding for header on small screens */
     header {
         padding: 10px 0;
     }
 
-    /* ... Other responsive styles as needed ... */
+    .container {
+        flex-direction: column; /* Stack columns on small screens */
+    }
+
+    .content,
+    .featured-image {
+        width: 100%; /* Full width on small screens */
+        margin: 0; /* Remove margin on small screens */
+    }
+
+    .featured-image {
+        margin-top: 20px; /* Add space between content and image on small screens */
+    }
 }
 

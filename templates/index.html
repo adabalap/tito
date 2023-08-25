@@ -28,7 +28,30 @@
     <div class="content">
         <h3>TITO: Total Information Technology Odyssey</h3>
         <table>
-            <!-- ... Existing table content ... -->
+            <tr>
+                <th>Host</th>
+                <td>{{ posts['node_name'] }}</td>
+            </tr>
+            <tr>
+                <th>Pod</th>
+                <td>{{ posts['pod_name'] }}</td>
+            </tr>
+            <tr>
+                <th>Uptime</th>
+                <td>{{ posts['formatted_uptime'] }}</td>
+            </tr>
+            <tr>
+                <th>Memory Usage</th>
+                <td>{{ posts['mem_usage'] }}</td>
+            </tr>
+            <tr>
+                <th>CPU Load</th>
+                <td>{{ posts['cpu_load'] }}</td>
+            </tr>
+            <tr>
+                <th>Number of Processes</th>
+                <td>{{ posts['num_processes'] }}</td>
+            </tr>
         </table>
     </div>
 
