@@ -10,7 +10,8 @@ def tito():
     posts = {}
 
     # Get environment variables
-    posts['node_name'] = os.getenv('HOSTNAME') or os.getenv('MY_NODE_NAME')
+    #posts['node_name'] = os.getenv('HOSTNAME') or os.getenv('MY_NODE_NAME')
+    posts['node_name'] =  os.getenv('MY_NODE_NAME')
 
     # Get pod name
     returned_output = os.uname()
