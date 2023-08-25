@@ -1,78 +1,72 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="styles.css">
     <title>TITO</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img class="logo-img" src="{{ url_for('static', filename='your-logo.png') }}" alt="Logo">
-        </div>
-        <div class="menu">
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tech Blogs</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="burger-menu">
-            <!-- You can use an entity like &#9776; or an image for the icon -->
-            &#9776;
-        </div>
-    </header>
-    <div class="content">
-        <h3>TITO: Total Information Technology Odyssey</h3>
-        <table>
-            <tr>
-                <th>Host</th>
-                <td>{{ posts['node_name'] }}</td>
-            </tr>
-            <tr>
-                <th>Pod</th>
-                <td>{{ posts['pod_name'] }}</td>
-            </tr>
-            <tr>
-                <th>Uptime</th>
-                <td>{{ posts['formatted_uptime'] }}</td>
-            </tr>
-            <tr>
-                <th>Memory Usage</th>
-                <td>{{ posts['mem_usage'] }}</td>
-            </tr>
-            <tr>
-                <th>CPU Load</th>
-                <td>{{ posts['cpu_load'] }}</td>
-            </tr>
-            <tr>
-                <th>Number of Processes</th>
-                <td>{{ posts['num_processes'] }}</td>
-            </tr>
-        </table>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="your-logo.png" alt="Logo" width="96" height="96">
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul class="desktop-menu">
+                        <li><a href="http://www.adabala.com">Home</a></li>
+                        <li><a href="http://www.adabala.com">Tech Articles</a></li>
+                        <li><a href="http://www.adabala.com">TITO Story</a></li>
+                    </ul>
+                    <div class="mobile-menu">
+                        <div class="burger-icon"></div>
+                    </div>
+                </nav>
+            </div>
+            <h1 class="page-title">TITO</h1>
+        </header>
+        <main>
+            <div class="content">
+        	<h3>TITO: Total Information Technology Odyssey</h3>
+                <div class="featured-image">
+		    <img src="https://picsum.photos/400/300?random" alt="Featured Image">
+                </div>
+                <div class="stats">
+                    <table>
+                        <!-- Your stats table content goes here -->
+		        <table>
+		            <tr>
+		                <th>Host</th>
+		                <td>{{ posts['node_name'] }}</td>
+		            </tr>
+		            <tr>
+		                <th>Pod</th>
+		                <td>{{ posts['pod_name'] }}</td>
+		            </tr>
+		            <tr>
+		                <th>Uptime</th>
+		                <td>{{ posts['formatted_uptime'] }}</td>
+		            </tr>
+		            <tr>
+		                <th>Memory Usage</th>
+		                <td>{{ posts['mem_usage'] }}</td>
+		            </tr>
+		            <tr>
+		                <th>CPU Load</th>
+		                <td>{{ posts['cpu_load'] }}</td>
+		            </tr>
+		            <tr>
+		                <th>Number of Processes</th>
+		                <td>{{ posts['num_processes'] }}</td>
+		            </tr>
+		        </table>
+                    </table>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <!-- Add the featured image -->
-    <div class="featured-image">
-        <img src="https://picsum.photos/400/300?random" alt="Featured Image">
-    </div>
-
-    <!-- ... Continue with the rest of your HTML ... -->
-
-    <script>
-       // JavaScript to toggle the menu
-       document.addEventListener("DOMContentLoaded", function () {
-           const burgerMenu = document.querySelector(".burger-menu");
-           const menu = document.querySelector(".menu ul");
-
-           burgerMenu.addEventListener("click", function () {
-               menu.classList.toggle("show-menu");
-           });
-       });
-    </script>
 </body>
 </html>
 

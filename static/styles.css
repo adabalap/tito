@@ -1,130 +1,92 @@
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li {
+body, ul, li {
     margin: 0;
     padding: 0;
 }
 
-/* Base styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0; /* Remove default margin */
-    overflow-x: hidden; /* Hide horizontal overflow */
+/* Apply styles to the container */
+.container {
+    max-width: 100%;
+    margin: 0 10px; /* 10x border on left and right */
 }
 
 /* Header styles */
 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
     background-color: #333;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
 }
 
-.logo {
-    flex: 1;
-}
-
-.logo .logo-img {
-    max-width: 24px;
-    max-height: 24px;
-    width: auto;
-    height: auto;
-}
-
-.menu {
-    flex: 1;
-    text-align: right;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
+.logo img {
     margin-right: 20px;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+.menu nav ul.desktop-menu {
+    list-style: none;
+    display: flex;
 }
 
-/* Hide the menu items by default for small screens */
-.menu ul {
-    display: none;
+.menu nav ul.desktop-menu li {
+    margin-right: 20px;
 }
 
-/* Style the burger menu icon */
-.burger-menu {
+.menu nav .mobile-menu {
     display: none;
     cursor: pointer;
-    font-size: 24px;
-    padding: 10px;
 }
 
-/* Show the menu items when the burger menu is active */
-.menu ul.show-menu {
-    display: block;
+.page-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Mobile menu icon styles */
+.burger-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: transform 0.3s;
 }
 
 /* Content styles */
-.container {
-    display: flex; /* Use flexbox to create a two-column layout */
-    justify-content: space-between; /* Add space between columns */
-    max-width: 1200px; /* Set a maximum width for the content */
-    margin: 0 auto; /* Center the content horizontally */
-    padding: 20px; /* Add space around the content */
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
 .content {
-    flex: 1; /* Allow content to grow and take available space */
-    padding: 20px; /* Add space inside the content column */
-}
-
-.featured-image {
-    flex: 1; /* Allow image to grow and take available space */
-    padding: 20px; /* Add space inside the image column */
-    background-color: #f9f9f9; /* Add a background color to the image column */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 
 .featured-image img {
-    max-width: 100%; /* Ensure the image fits within its container */
-    height: auto;
+    max-width: 50%;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .burger-menu {
+.stats {
+    flex-grow: 1;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .menu nav ul.desktop-menu {
+        display: none;
+    }
+
+    .menu nav .mobile-menu {
         display: block;
     }
 
-    .menu ul.show-menu {
-        display: block;
+    .burger-icon.active {
+        transform: rotate(90deg);
     }
 
-    header {
-        padding: 10px 0;
+    .content {
+        flex-direction: column;
     }
 
-    .container {
-        flex-direction: column; /* Stack columns on small screens */
-    }
-
-    .content,
-    .featured-image {
-        width: 100%; /* Full width on small screens */
-        margin: 0; /* Remove margin on small screens */
-    }
-
-    .featured-image {
-        margin-top: 20px; /* Add space between content and image on small screens */
+    .featured-image img {
+        max-width: 100%;
     }
 }
 
